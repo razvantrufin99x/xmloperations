@@ -1,0 +1,32 @@
+//go to first record
+private void button4_Click(object sender, EventArgs e)
+{
+CurrentNodeIndex = 0;
+FillControls();
+}
+//go to previous record
+private void button5_Click(object sender, EventArgs e)
+{
+CurrentNodeIndex--;
+if (CurrentNodeIndex < 0)
+{
+CurrentNodeIndex = 0;
+}
+FillControls();
+}
+//go to next record
+private void button6_Click(object sender, EventArgs e)
+{
+CurrentNodeIndex++;
+if (CurrentNodeIndex >= doc.DocumentElement.ChildNodes.Count)
+{
+CurrentNodeIndex = doc.DocumentElement.ChildNodes.Count-1;
+}
+FillControls();
+}
+//go to last record
+private void button7_Click(object sender, EventArgs e)
+{
+CurrentNodeIndex = doc.DocumentElement.ChildNodes.Count - 1;
+FillControls();
+}

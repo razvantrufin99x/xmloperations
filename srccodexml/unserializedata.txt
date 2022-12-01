@@ -1,0 +1,24 @@
+private void button2_Click(object sender, EventArgs e)
+{
+XmlTextReader reader = new XmlTextReader(textBox2.Text);
+reader.WhitespaceHandling = WhitespaceHandling.None;
+while (reader.Read())
+{
+if (reader.NodeType == XmlNodeType.Element)
+{
+if (reader.Name == "imagefile")
+{
+int length = int.Parse(reader.GetAttribute("size"));
+string filename = reader.GetAttribute("filename");
+byte[] data = new byte[length];
+string str = reader.ReadElementString();
+byte[] imagedata = Convert.FromBase64String(str);
+MemoryStream ms = new MemoryStream();
+ms.Write(imagedata, 0, imagedata.Length);
+Image image = Image.FromStream(ms);
+pictureBox1.Image = image;
+ms.Close();
+}
+}
+}
+}

@@ -1,0 +1,7 @@
+private void button2_Click(object sender, EventArgs e)
+{
+label8.Text = list[comboBox1.SelectedIndex].ChildNodes[0].InnerText;
+label9.Text = list[comboBox1.SelectedIndex].ChildNodes[1].InnerText;
+label10.Text = list[comboBox1.SelectedIndex].ChildNodes[2].InnerText;
+label11.Text = list[comboBox1.SelectedIndex].ChildNodes[3].InnerText;
+}

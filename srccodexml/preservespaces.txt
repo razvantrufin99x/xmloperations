@@ -1,0 +1,8 @@
+private void button1_Click(object sender, EventArgs e)
+{
+XmlDocument doc = new XmlDocument();
+doc.PreserveWhitespace = checkBox1.Checked;
+doc.Load(Application.StartupPath + @"\employees.xml");
+MessageBox.Show("Employee node contains " +
+doc.DocumentElement.ChildNodes.Count + " child nodes");
+}

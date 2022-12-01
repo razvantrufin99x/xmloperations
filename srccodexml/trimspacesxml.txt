@@ -1,0 +1,7 @@
+private void button1_Click(object sender, EventArgs e)
+{
+XmlDocument doc = new XmlDocument();
+doc.PreserveWhitespace = checkBox1.Checked;
+doc.Load(Application.StartupPath + @"\employees.xml");
+MessageBox.Show(doc.InnerXml);
+}

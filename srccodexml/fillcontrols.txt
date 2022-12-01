@@ -1,0 +1,15 @@
+private void FillControls()
+{
+XmlNode node = doc.DocumentElement.ChildNodes[CurrentNodeIndex];
+comboBox1.Text = node.Attributes["employeeid"].Value;
+textBox1.Text = node.ChildNodes[0].InnerText;
+textBox2.Text = node.ChildNodes[1].InnerText;
+textBox3.Text = node.ChildNodes[2].InnerText;
+textBox4.Text = node.ChildNodes[3].InnerText;
+UpdateLabel();
+}
+private void UpdateLabel()
+{
+label6.Text = "Employee " + (CurrentNodeIndex + 1) + " of " +
+doc.DocumentElement.ChildNodes.Count;
+}

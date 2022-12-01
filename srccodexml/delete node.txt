@@ -1,0 +1,11 @@
+private void button3_Click(object sender, EventArgs e)
+{
+XmlNode node = doc.SelectSingleNode("//employee[@employeeid='" +
+comboBox1.SelectedItem + "']");
+if (node != null)
+{
+doc.DocumentElement.RemoveChild(node);
+}
+doc.Save(Application.StartupPath + "/employees.xml");
+UpdateLabel();
+}

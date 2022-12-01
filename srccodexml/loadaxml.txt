@@ -1,0 +1,27 @@
+private void button1_Click(object sender, EventArgs e)
+{
+XmlTextReader reader;
+if (radioButton1.Checked)
+{
+reader = new XmlTextReader(textBox1.Text);
+}
+if (radioButton2.Checked)
+{
+FileStream stream=File.OpenRead(textBox1.Text);
+reader = new XmlTextReader(stream);
+//some processing code
+stream.Close();
+reader.Close();
+}
+if (radioButton3.Checked)
+{
+MemoryStream ms=new MemoryStream();
+byte[] data=ASCIIEncoding.ASCII.GetBytes(textBox1.Text);
+ms.Write(data,0,data.Length);
+reader = new XmlTextReader(ms);
+//some processing code
+ms.Close();
+reader.Close();
+}
+MessageBox.Show("XML Document Opened Successfully!");
+}

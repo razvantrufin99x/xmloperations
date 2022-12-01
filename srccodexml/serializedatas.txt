@@ -1,0 +1,16 @@
+private void button1_Click(object sender, EventArgs e)
+{
+XmlTextWriter writer = new XmlTextWriter(textBox2.Text, null);
+FileStream fs = File.OpenRead(textBox1.Text);
+byte[] data = new byte[fs.Length];
+fs.Position = 0;
+fs.Read(data, 0, data.Length);
+fs.Close();
+writer.WriteStartDocument();
+writer.WriteStartElement("imagefile");
+writer.WriteAttributeString("filename", textBox1.Text);
+writer.WriteAttributeString("size", data.Length.ToString());
+writer.WriteBase64(data,0,data.Length);
+writer.WriteEndElement();
+writer.Close();
+}

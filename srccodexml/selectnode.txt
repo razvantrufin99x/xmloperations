@@ -1,0 +1,21 @@
+XmlNodeList list = null;
+
+private void button1_Click(object sender, EventArgs e)
+{
+XmlDocument doc = new XmlDocument();
+doc.Load(Application.StartupPath + "/employees.xml");
+if (radioButton1.Checked)
+{
+list = doc.SelectNodes(string.Format
+("//employee[./firstname/text()='{0}']",textBox1.Text));
+}
+else
+{
+list = doc.SelectNodes(string.Format
+("//employee[./lastname/text()='{0}']",textBox1.Text));
+}
+foreach (XmlNode node in list)
+{
+comboBox1.Items.Add(node.Attributes["employeeid"].Value);
+}
+}

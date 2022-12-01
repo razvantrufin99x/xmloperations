@@ -1,0 +1,12 @@
+void doc_NodeRemoved(object sender, XmlNodeChangedEventArgs e)
+{
+MessageBox.Show("Node " + e.Node.Name + " removed successfully!");
+}
+void doc_NodeInserted(object sender, XmlNodeChangedEventArgs e)
+{
+MessageBox.Show("Node " + e.Node.Name + " added successfully!");
+}
+void doc_NodeChanged(object sender, XmlNodeChangedEventArgs e)
+{
+MessageBox.Show("Node " + e.Node.Name + " changed successfully!");
+}

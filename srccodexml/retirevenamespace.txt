@@ -1,0 +1,8 @@
+private void button1_Click(object sender, EventArgs e)
+{
+XmlDocument doc = new XmlDocument();
+doc.Load(Application.StartupPath + @"\employees.xml");
+label4.Text = doc.DocumentElement.NamespaceURI;
+label5.Text = doc.DocumentElement.Prefix;
+label6.Text = doc.DocumentElement.LocalName;
+}

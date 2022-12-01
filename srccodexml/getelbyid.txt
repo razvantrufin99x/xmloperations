@@ -1,0 +1,8 @@
+private void button1_Click(object sender, EventArgs e)
+{
+XmlElement ele= doc.GetElementById(comboBox1.SelectedItem.ToString());
+label6.Text = ele.ChildNodes[0].InnerText;
+label7.Text = ele.ChildNodes[1].InnerText;
+label8.Text = ele.ChildNodes[2].InnerText;
+label9.Text = ele.ChildNodes[3].InnerText;
+}

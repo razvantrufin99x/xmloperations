@@ -1,0 +1,14 @@
+private void button2_Click(object sender, EventArgs e)
+{
+XmlNode node=doc.SelectSingleNode("//employee[@employeeid='" +
+comboBox1.SelectedItem + "']");
+if (node != null)
+{
+node.ChildNodes[0].InnerText = textBox1.Text;
+node.ChildNodes[1].InnerText = textBox2.Text;
+node.ChildNodes[2].InnerText = textBox3.Text;
+XmlCDataSection notes = doc.CreateCDataSection(textBox4.Text);
+node.ChildNodes[3].ReplaceChild(notes, node.ChildNodes[3].ChildNodes[0]);
+}
+doc.Save(Application.StartupPath + "/employees.xml");
+}

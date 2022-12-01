@@ -1,0 +1,8 @@
+NameTable table = new NameTable();
+XmlTextReader reader1 =
+new XmlTextReader(Application.StartupPath + @"\employees1.xml",table);
+XmlTextReader reader2 =
+new XmlTextReader(Application.StartupPath + @"\employees2.xml",table);
+XmlTextReader reader3 =
+new XmlTextReader(Application.StartupPath + @"\employees3.xml",table);
+//process further

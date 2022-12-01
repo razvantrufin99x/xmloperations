@@ -1,0 +1,47 @@
+private void button1_Click(object sender, EventArgs e)
+{
+SqlConnection cnn = new SqlConnection(textBox1.Text);
+SqlCommand cmd = new SqlCommand();
+cmd.Connection = cnn;
+cmd.CommandText = "SELECT * FROM " + textBox2.Text;
+cnn.Open();
+SqlDataReader reader = cmd.ExecuteReader();
+XmlTextWriter writer = new XmlTextWriter(textBox3.Text, null);
+if(checkBox1.Checked)
+{
+writer.Formatting = Formatting.Indented;
+writer.Indentation = int.Parse(textBox4.Text);
+writer.IndentChar = (radioButton3.Checked ? ' ' : '\t');
+}
+writer.WriteStartDocument();
+writer.WriteComment("File exported on " + DateTime.Now);
+writer.WriteStartElement("table");
+while (reader.Read())
+{
+if (radioButton1.Checked)
+{
+writer.WriteStartElement("row");
+for (int i = 0; i < reader.FieldCount; i++)
+{
+writer.WriteStartElement(reader.GetName(i));
+writer.WriteString(reader.GetValue(i).ToString());
+writer.WriteEndElement();
+}
+writer.WriteEndElement();
+}
+else
+{
+writer.WriteStartElement("row");
+for (int i = 0; i < reader.FieldCount; i++)
+{
+writer.WriteAttributeString(reader.GetName(i),
+reader.GetValue(i).ToString());
+}
+writer.WriteEndElement();
+}
+}
+writer.WriteEndElement();
+writer.Close();
+reader.Close();
+cnn.Close();
+}

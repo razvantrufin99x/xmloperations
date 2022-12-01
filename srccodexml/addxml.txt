@@ -1,0 +1,26 @@
+private void button1_Click(object sender, EventArgs e)
+{
+XmlElement employee = doc.CreateElement("employee");
+XmlElement firstname = doc.CreateElement("firstname");
+XmlElement lastname = doc.CreateElement("lastname");
+XmlElement homephone = doc.CreateElement("homephone");
+XmlElement notes = doc.CreateElement("notes");
+XmlAttribute employeeid = doc.CreateAttribute("employeeid");
+employeeid.Value = comboBox1.Text;
+XmlText firstnametext = doc.CreateTextNode(textBox1.Text);
+XmlText lastnametext = doc.CreateTextNode(textBox2.Text);
+XmlText homephonetext = doc.CreateTextNode(textBox3.Text);
+XmlCDataSection notestext = doc.CreateCDataSection(textBox4.Text);
+employee.Attributes.Append(employeeid);
+employee.AppendChild(firstname);
+employee.AppendChild(lastname);
+employee.AppendChild(homephone);
+employee.AppendChild(notes);
+firstname.AppendChild(firstnametext);
+lastname.AppendChild(lastnametext);
+homephone.AppendChild(homephonetext);
+notes.AppendChild(notestext);
+doc.DocumentElement.AppendChild(employee);
+doc.Save(Application.StartupPath + "/employees.xml");
+UpdateLabel();
+}

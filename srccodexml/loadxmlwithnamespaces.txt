@@ -1,0 +1,12 @@
+private void Form1_Load(object sender, EventArgs e)
+{
+doc.Load(Application.StartupPath + "/employees.xml");
+doc.NodeChanged += new XmlNodeChangedEventHandler(doc_NodeChanged);
+doc.NodeInserted += new XmlNodeChangedEventHandler(doc_NodeInserted);
+doc.NodeRemoved += new XmlNodeChangedEventHandler(doc_NodeRemoved);
+foreach (XmlNode node in doc.DocumentElement.ChildNodes)
+{
+comboBox1.Items.Add(node.Attributes["employeeid"].Value);
+}
+FillControls();
+}

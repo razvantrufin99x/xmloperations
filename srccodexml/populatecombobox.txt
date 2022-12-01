@@ -1,0 +1,12 @@
+XmlDocument called doc:
+XmlDocument doc = new XmlDocument();
+
+private void Form1_Load(object sender, EventArgs e)
+{
+doc.Load(Application.StartupPath + "/employees.xml");
+foreach (XmlNode node in doc.DocumentElement.ChildNodes)
+{
+string employeeid = node.Attributes["employeeid"].Value;
+comboBox1.Items.Add(employeeid);
+}
+}
